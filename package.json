@@ -1,15 +1,20 @@
 {
   "dependencies": {
-    "express": "^4.18.2"
+    "cookie-session": "^2.0.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.4",
+    "nodemon": "^2.0.22",
+    "passport": "^0.6.0"
   },
-  "name": "project_node_final",
+  "name": "Learning Management System - Simplylearn - Final Project",
   "version": "1.0.0",
-  "description": "project final node js",
+  "description": "Learning Management System - Simplylearn - Final Project",
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
-    "serve": "node index.js"
-    
+    "serve": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "ricky setiawan suryadi",
   "license": "ISC"

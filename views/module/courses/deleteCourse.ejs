@@ -1,0 +1,76 @@
+<%- include('../../partials/header'); %> <div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Delete Courses <a href="/course/createCourse" class="btn btn-success btn-icon-split float-right">
+      <span class="icon text-white-50">
+          <i class="fas fa-plus"></i>
+      </span>
+      <span class="text">Create New Course</span>
+  </a></h1>
+  <div class="card shadow mb-4">
+   
+    <div class="card-body">
+      <div class="table-fixed">
+        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+         
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                <thead>
+                  <tr role="row">
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 5%">#</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width:20%">Photo</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 25%">Course Name</th>
+                    
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 20%">Category</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width:  10%">Duration</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 20%">View</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th rowspan="1" colspan="1">#</th>
+                    <th rowspan="1" colspan="1">Photo</th>
+                    <th rowspan="1" colspan="1">Course Name</th>
+                    <th rowspan="1" colspan="1">Category</th>
+                    <th rowspan="1" colspan="1">Duration</th>
+                    <th rowspan="1" colspan="1">View</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr class="odd">
+                    <td class="sorting_1">1</td>
+                    <td style="padding:0px"><img src="https://internetmarketing.gold/wp-content/uploads/2023/04/ryan-darani-new-course.png" width="100%"/></td>
+                    <td>Web Development</td>
+                    <td>Programing Language</td>
+                    <td>12 Hours</td>
+                    <td><a href="#" class="btn btn-danger btn-icon-split">
+                      <span class="icon text-white-50">
+                          <i class="fas fa-trash"></i>
+                      </span>
+                      <span class="text">Delete</span>
+                  </a></td>
+                  </tr>
+                  <tr class="even">
+                    <td class="sorting_1">2</td>
+                    <td style="padding:0px"><img src="https://internetmarketing.gold/wp-content/uploads/2023/04/ryan-darani-new-course.png" width="100%"/></td>
+                    <td>Java</td>
+                    <td>Programing Language</td>
+                    <td>28 Hours</td>
+                    <td><a href="#" class="btn btn-danger btn-icon-split">
+                      <span class="icon text-white-50">
+                          <i class="fas fa-trash"></i>
+                      </span>
+                      <span class="text">Delete</span>
+                  </a></td>
+                    
+                </tbody>
+              </table>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../../partials/footer'); %>

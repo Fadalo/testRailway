@@ -1,0 +1,92 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">LMS FINAL NODE</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="/" target="_self">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+   
+    <!-- Nav Item - Pages Collapse Menu -->
+    
+    <li class="nav-item ">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseManageCourse" aria-expanded="true" aria-controls="collapseManageCourse">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Manage Courses</span>
+        </a>
+        <div id="collapseManageCourse" class="collapse " aria-labelledby="headingCollapseManageCourse" data-parent="#accordionSidebar" style="">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Courses:</h6>
+                <a class="collapse-item " target="_self" href="/course/createCourse">Create Course</a>
+                <a class="collapse-item" target="_self" href="/course/updateCourse">Update Course</a>
+                <a class="collapse-item" target="_self" href="/course/deleteCourse">Delete Course</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item ">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseManageLeason" aria-expanded="true" aria-controls="collapseManageLeason">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Manage Leason</span>
+        </a>
+        <div id="collapseManageLeason" class="collapse " aria-labelledby="headingCollapseManageLeason" data-parent="#accordionSidebar" style="">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Material:</h6>
+                <a class="collapse-item " target="_self" href="/leason/createLeason">Create Leason</a>
+                <a class="collapse-item" target="_self" href="/leason/updateLeason">Update Leason</a>
+                <a class="collapse-item" target="_self" href="/leason/deleteLeason">Delete Leason</a>
+            </div>
+        </div>
+    </li>
+
+     <!-- Nav Item - Utilities Collapse Menu -->
+     <li class="nav-item ">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseManageMaterial" aria-expanded="true" aria-controls="collapseManageMaterial">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Manage Course Material</span>
+        </a>
+        <div id="collapseManageMaterial" class="collapse " aria-labelledby="headingCollapseManageMaterial" data-parent="#accordionSidebar" style="">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Leason:</h6>
+                <a class="collapse-item " target="_self" href="/material/createMaterial">Create Course Material</a>
+                <a class="collapse-item" target="_self" href="/material/updateMaterial">Update Course Material</a>
+                <a class="collapse-item" target="_self" href="/material/deleteMaterial">Delete Course Material</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/profile/editProfile"  target="_self" >
+            <i class="fa-solid fa-user"></i>
+            <span>Edit Profile</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+  
+</ul>
+<!-- End of Sidebar -->
