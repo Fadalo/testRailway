@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title><% if (pages) { %><%= pages.title %><% } %></title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,10 +40,10 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <%- include('./sidebar'); %>
+    <%- include('./sidebar',{'pages':pages,'param':param}); %>
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
    
-            <%- include('./nav'); %>
+            <%- include('./nav',{'pages':pages,'param':param}); %>

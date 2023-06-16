@@ -5,12 +5,13 @@ const cookieSession = require('cookie-session');
 const config = require('./config/keys');
 
 mongoose.connect(config.mongoURI);
-const User = require('./models/User');
+const User =  require('./models/User');
 
 //require('./services/passport');
 
-const result =  User.createCollection();
-console.log(result);
+var user = new User();
+user.name = "hello4";
+user.save();
 
 const app = express();
 

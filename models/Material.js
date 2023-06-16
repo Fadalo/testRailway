@@ -13,7 +13,7 @@ const materialSchema = new Schema({
   "photo": String
 });
 
-mongoose.model('materials', materialSchema);
+module.exports = mongoose.model('materials', materialSchema);
 
 // {
 //     "name": "Java",

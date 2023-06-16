@@ -1,13 +1,20 @@
+const User = require('../models/User');
+const UserController = require('../controllers/user');
+const helpers = require('../controllers/helpers');
+
+
 
 module.exports = viewRoutes = (app,db,config) => {
-app.get('/', (req, res) => {
-  //const User = require('../models/User');
-  //var user = new User();
-  //console.log(user);
-  res.render('dashboard',{'pages':config.pages});
+app.get('/', async  (req, res) => {
+
+  var param  = await helpers.doGetParam(req,res,config,'Dashboard');
+  res.render('dashboard',param);
 });
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get('/login', async (req, res) => {
+
+  var param  = await helpers.doGetParam(req,res,config,'Login');
+  res.render('login',param);
+
 });
 app.get('/loggout', (req, res) => {
   res.render('login');
@@ -17,53 +24,80 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
-app.get('/course', (req, res) => {
-  res.render('listCourses');
-});
-app.get('/course/createCourse', (req, res) => {
-  res.render('createCourse');
-});
-app.get('/course/updateCourse', (req, res) => {
-  res.render('updateCourse');
-});
-app.get('/course/deleteCourse', (req, res) => {
-  res.render('deleteCourse');
+app.get('/course', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'listCourses');
+  res.render('listCourses',param);
 });
 
-app.get('/leason', (req, res) => {
-  res.render('listLeason');
-});
-app.get('/leason/createLeason', (req, res) => {
-  res.render('createLeason');
-});
-app.get('/leason/updateLeason', (req, res) => {
-  res.render('updateLeason');
-});
-app.get('/leason/deleteLeason', (req, res) => {
-  res.render('deleteLeason');
+app.get('/course/createCourse', async (req, res) => {
+
+  var param  = await helpers.doGetParam(req,res,config,'createCourse');
+  res.render('createCourse',param);
 });
 
-app.get('/material', (req, res) => {
-  res.render('listMaterial');
+app.get('/course/updateCourse', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'updateCourse');
+  res.render('updateCourse',param);
 });
-app.get('/material/createMaterial', (req, res) => {
-  res.render('createMaterial');
+app.get('/course/updateCourse/:id', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'updateCourse');
+  res.render('updateCourse',param);
 });
-app.get('/material/updateMaterial', (req, res) => {
-  res.render('updateMaterial');
-});
-app.get('/material/deleteMaterial', (req, res) => {
-  res.render('deleteMaterial');
+app.get('/course/deleteCourse', async (req, res) => {
+  
+  var param  = await helpers.doGetParam(req,res,config,'deleteCourse');
+  res.render('deleteCourse',param);
 });
 
-app.get('/profile/editProfile', (req, res) => {
-  res.render('editProfile');
+app.get('/leason', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'deleteLeason');
+  res.render('deleteLeason',param);
 });
-app.get('/profile/changeProfile', (req, res) => {
-  res.render('changeProfile');
+app.get('/leason/createLeason', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'createLeason');
+  res.render('createLeason',param);
 });
-app.get('/profile/changePassword', (req, res) => {
-  res.render('changePassword');
+app.get('/leason/updateLeason', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'updateLeason');
+  res.render('updateLeason',param);
+});
+app.get('/leason/deleteLeason', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'deleteLeason');
+  res.render('deleteLeason',param);
+});
+
+app.get('/material', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'listMaterial');
+  res.render('listMaterial',param);
+});
+app.get('/material/createMaterial', async (req, res) => {
+
+  var param  = await helpers.doGetParam(req,res,config,'createMaterial');
+  res.render('createMaterial',param);
+});
+app.get('/material/updateMaterial', async (req, res) => {
+  
+  var param  = await helpers.doGetParam(req,res,config,'updateMaterial');
+  res.render('updateMaterial',param);
+});
+app.get('/material/deleteMaterial', async (req, res) => {
+ 
+  var param  = await helpers.doGetParam(req,res,config,'deleteMaterial');
+  res.render('deleteMaterial',param);
+});
+
+app.get('/profile/editProfile', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'editProfile');
+  res.render('editProfile',param);
+});
+app.get('/profile/changeProfile', async (req, res) => {
+ 
+  var param  = await helpers.doGetParam(req,res,config,'changeProfile');
+  res.render('changeProfile',param);
+});
+app.get('/profile/changePassword', async (req, res) => {
+  var param  = await helpers.doGetParam(req,res,config,'changePassword');
+  res.render('changePassword',param);
 });
 
 }

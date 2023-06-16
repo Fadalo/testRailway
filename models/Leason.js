@@ -13,7 +13,7 @@ const leasonSchema = new Schema({
   "photo": String
 });
 
-mongoose.model('leasons', leasonSchema);
+module.exports = mongoose.model('leasons', leasonSchema);
 
 // {
 //     "name": "Java",

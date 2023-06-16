@@ -6,6 +6,7 @@ apiRoutes.get('/', (req, res) => {
   res.send('home');
 });
 apiRoutes.post('/login', (req, res) => {
+
   res.send('register');
 });
 apiRoutes.get('/register', (req, res) => {

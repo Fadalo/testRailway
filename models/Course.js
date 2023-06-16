@@ -13,4 +13,4 @@ const courseSchema = new Schema({
   "photo": String
 });
 
-mongoose.model('courses', courseSchema);
+module.exports = mongoose.model('courses', courseSchema);

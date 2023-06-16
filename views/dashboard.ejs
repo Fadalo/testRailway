@@ -1,10 +1,11 @@
-<%- include('./partials/header'); %>
 
-<% if (pages) { %>
-    <h2><%= pages.title %></h2>
-  <% } %>
+<%- include('./partials/header',{'pages':pages,'param':param}); %>
+
+
 <div class="container-fluid">
-
+    <% if (pages) { %>
+        <h2><%= pages.title.toUpperCase(); %></h2>
+      <% } %>
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
