@@ -26,10 +26,8 @@ app.get('/home',requireLogin, async  (req, res) => {
 
 // RENDER VIEW LOGIN
 app.get('/login',  async (req, res) => {
-
   var param = {'pages':config.pages}
   res.render('login',param);
-
 });
 // RENDER ACTION LOGIN
 app.post('/login',urlencodedParser, async (req, res) => {
@@ -40,20 +38,17 @@ app.post('/login',urlencodedParser, async (req, res) => {
     url:     'http://localhost:3000/api/login',
     body:    "emailID="+req.body.emailID+"&password="+req.body.password
   }, function(error, response, body){
-   // console.log(req.session);
     var resultP = JSON.parse(body)   ; 
     if(resultP.result == "ok" && resultP.cid != ""){
       req.session.currUser = resultP.cid;
       req.session.save(); 
       res.redirect('/'); 
-      //res.send(req.session.currName);
-    }
-    if(resultP.result == "not found" && resultP.cid == ""){
+    } else if(resultP.result == "not found" ){
+      res.redirect('/login');
+    } else{
       var param  =  helpers.doGetParam(req,res,config,'Login');
       res.render('login',param); 
-      //res.redirect('/login');
     }
-    
   });
  
   

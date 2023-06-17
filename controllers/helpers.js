@@ -6,8 +6,8 @@ const helpers = {
         //var userCurr = await UserController.doGetCurrentUser(req,res);
         var session = req.session;
         //console.log('helper:'+JSON.stringify(req.session));
-        const id = (session.currUser==undefined)?"":session.currUser;
-        //  id = '648cb4ae226fc13275e6d4e3';
+        var id = (session.currUser==undefined)?"":session.currUser;
+        // var id = '648cb4ae226fc13275e6d4e3';
          if(id !== ""){
                 var resultCurrUser = await User.findById(id).exec();
                 resultCurrUser1 = JSON.stringify(resultCurrUser);
