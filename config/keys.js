@@ -1,4 +1,4 @@
-const mongoURI = process.env.PORT || "mongodb://localhost:27017/lms_db";
+const mongoURI = process.env.mongoURI || "mongodb://localhost:27017/lms_db";
 module.exports = {
    //mongoURI: 'mongodb+srv://Ricky:Sansan87@cluster0.qqmbzlz.mongodb.net/lms_db',
    mongoURI: mongoURI, 
