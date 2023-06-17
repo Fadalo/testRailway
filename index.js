@@ -26,7 +26,7 @@ app.use(session({
   
   secret: config.cookieKey, // Replace with your own secret key
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { maxAge: oneDay }, // Set secure to true if using HTTPS
 }));
 
