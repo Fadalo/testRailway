@@ -1,20 +1,36 @@
 const express = require('express');
-const path = require('path');
 const mongoose = require('mongoose');
-const cookieSession = require('cookie-session');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+var cors = require('cors');
+const oneDay = 1000 * 60 * 60 * 24;
+//const cookieSession = require('cookie-session');
 const config = require('./config/keys');
 
-mongoose.connect(config.mongoURI);
-const User =  require('./models/User');
-
-//require('./services/passport');
-
-var user = new User();
-user.name = "hello4";
-user.save();
-
+// Enable Connection MongoDB
+mongoose.connect(config.mongoURI); 
+var bodyParser = require('body-parser');
 const app = express();
 
+// Enabled --create application/x-www-form-urlencoded parser
+
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// Enabled Session
+app.set('trust proxy', 1);
+app.use(cookieParser());
+app.enable('trust proxy');
+app.use(session({
+  
+  secret: config.cookieKey, // Replace with your own secret key
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: oneDay }, // Set secure to true if using HTTPS
+}));
+
+// Enabled View EJS
 app.set("view engine", "ejs");
 app.set('views',  [
   path.join(__dirname, '/views'),
@@ -25,14 +41,20 @@ app.set('views',  [
 
 app.use(express.static(path.join(__dirname, 'public')));
 const db = mongoose.connect(config.mongoURI);
+config['urlencodedParser'] = urlencodedParser;
 
 
+// Load Router
 require('./routes/mainRoutes')(app,db,config);
 //route for index page
-
+//app.get('*', function(req, res) {
+  // res.redirect('/');
+ //});
 
 
 const port = process.env.PORT || 3000;
+//app.listen(port,"0.0.0.0", () => {
+
 app.listen(port,"0.0.0.0", () => {
   console.log(`Example app listening on port ${port}`)
 })

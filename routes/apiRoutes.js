@@ -1,30 +1,59 @@
 var express = require('express');
 var apiRoutes = express.Router();
+const UserController = require('../controllers/user');
+const helpers = require('../controllers/helpers');
+const bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
+// Route API DOCUMENTATION
 apiRoutes.get('/', (req, res) => {
   res.send('home');
 });
-apiRoutes.post('/login', (req, res) => {
 
-  res.send('register');
+// Route API LOGIN
+apiRoutes.get('/login',  async(req, res) => {
+ res.send(req.session.currUser);
 });
-apiRoutes.get('/register', (req, res) => {
-  res.send('register');
+apiRoutes.post('/login', urlencodedParser,async(req, res) => {
+  res.send(await UserController.doLogin(req,res));
 });
-apiRoutes.post('/register', (req, res) => {
-    res.send('register');
+
+
+// ROUTE API GET LOGOUT
+apiRoutes.get('/logout', async (req, res) => {
+  req.session.unset('currUser');
+  req.session.save (async(err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+    } else {
+      res.send('Session deleted successfully.');
+       var param  = await helpers.doGetParam(req,res,config,'Login');
+       res.render('login',param);
+    }
   });
   
+});
 
+// ROUTE API REGISTER
+apiRoutes.get('/register',urlencodedParser, async (req, res) => {
+  res.send(await UserController.doRegister(req,res));
+});
+apiRoutes.post('/register', urlencodedParser, async (req, res) => {
+  res.send( await  UserController.doRegister(req,res));
+ 
+});
+  
 
-/* COURSE SECTION */ 
+// LIST MUST HAVE LOGIN
+/* ROUTE COURSE */ 
 apiRoutes.get('/createCourse', (req, res) => {
   res.send('createCourse');
 });
 apiRoutes.post('/createCourse', (req, res) => {
     res.send('createCourse');
-  });
+});
   
 apiRoutes.get('/updateCourse', (req, res) => {
   res.send('updateCourse');
@@ -43,20 +72,20 @@ apiRoutes.post('/deleteCourse', (req, res) => {
 /* END COURSE SECTION */
 
 
-apiRoutes.get('/editProfile', (req, res) => {
-  res.send('editProfile');
+// ROUTE EDIT PROFILE
+apiRoutes.get('/editProfile', async(req, res) => {
+  res.send( await  UserController.doEditProfile(req,res));
 });
-apiRoutes.post('/editProfile', (req, res) => {
-    res.send('editProfile');
-  });
 
+apiRoutes.post('/editProfile', async(req, res) => {
+  res.send( await  UserController.doEditProfile(req,res));
+ });
 apiRoutes.get('/changeProfile', (req, res) => {
   res.send('changeProfile');
 });
 apiRoutes.post('/changeProfile', (req, res) => {
     res.send('changeProfile');
   });
-  
 apiRoutes.get('/changePassword', (req, res) => {
   res.send('changePassword');
 });
@@ -64,10 +93,6 @@ apiRoutes.post('/changePassword', (req, res) => {
     res.send('changePassword');
 });
   
-
-
-
-
 
 
 module.exports = apiRoutes;
