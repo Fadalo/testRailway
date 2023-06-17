@@ -38,6 +38,7 @@ app.post('/login',urlencodedParser, async (req, res) => {
     url:     'http://localhost:3000/api/login',
     body:    "emailID="+req.body.emailID+"&password="+req.body.password
   }, function(error, response, body){
+    if(!empty(body) ){ res.redirect('/login'); }
     var resultP = JSON.parse(body)   ; 
     if(resultP.result == "ok" && resultP.cid != ""){
       req.session.currUser = resultP.cid;
@@ -49,6 +50,7 @@ app.post('/login',urlencodedParser, async (req, res) => {
       var param  =  helpers.doGetParam(req,res,config,'Login');
       res.render('login',param); 
     }
+
   });
  
   

@@ -27,7 +27,7 @@ const userController = {
     },
     'doGetCurrentUser': async (req,res)=>{ 
        
-        const id = (req.session.currUser == undefined)?"":req.session.currUser;
+        const id = (req.session == undefined)?"":req.session.currUser;
         if(id !== ""){
                 var resultCurrUser = await User.findById(id).exec();
                 return JSON.stringify(resultCurrUser);
