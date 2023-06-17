@@ -35,7 +35,7 @@ app.post('/login',urlencodedParser, async (req, res) => {
   
   await request.post({
     headers: {'content-type' : 'application/x-www-form-urlencoded'},
-    url:     'http://localhost:3000/api/login',
+    url:     config.prodUrl+'/api/login',
     body:    "emailID="+req.body.emailID+"&password="+req.body.password
   }, function(error, response, body){
     if(body == "" ){ res.redirect('/login'); }
@@ -86,7 +86,7 @@ app.post('/register',urlencodedParser,async(req,res)=>{
 
   await request.post({
     headers: {'content-type' : 'application/x-www-form-urlencoded'},
-    url:     'http://localhost:3000/api/register',
+    url:     config.prodUrl+'/api/register',
     body:    querystring.stringify(paramRegister)
   }, function(error, response, body){
    // console.log(req.session);
