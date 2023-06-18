@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-
+const config = require('./config/keys');
 // Route API DOCUMENTATION
 apiRoutes.get('/', (req, res) => {
   res.send('home');
