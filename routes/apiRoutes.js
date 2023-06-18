@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-const config = require('./config/keys');
 // Route API DOCUMENTATION
 apiRoutes.get('/', (req, res) => {
   res.send('home');
@@ -81,6 +80,7 @@ apiRoutes.post('/editProfile', async(req, res) => {
   res.send( await  UserController.doEditProfile(req,res));
  });
 apiRoutes.get('/changeProfile', (req, res) => {
+  const config = require('../config/keys');
   res.send(config.prodUrl+'/api/login');
 });
 apiRoutes.post('/changeProfile', (req, res) => {
