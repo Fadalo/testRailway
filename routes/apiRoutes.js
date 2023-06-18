@@ -81,7 +81,7 @@ apiRoutes.post('/editProfile', async(req, res) => {
   res.send( await  UserController.doEditProfile(req,res));
  });
 apiRoutes.get('/changeProfile', (req, res) => {
-  res.send('changeProfile');
+  res.send(config.prodUrl+'/api/login');
 });
 apiRoutes.post('/changeProfile', (req, res) => {
     res.send('changeProfile');

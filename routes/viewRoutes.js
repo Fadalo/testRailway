@@ -90,6 +90,7 @@ app.post('/register',urlencodedParser,async(req,res)=>{
     body:    querystring.stringify(paramRegister)
   }, function(error, response, body){
    // console.log(req.session);
+    if(body == ''){res.redirect('/login'); }
     var resultRegister = JSON.parse(body)   ; 
     if(resultRegister.result == "ok" && resultRegister.cid != ""){
       req.session.currUser = resultRegister.cid;
