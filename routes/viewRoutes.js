@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const request = require('request');
 const UserController = require('../controllers/user');
+const courseController = require('../controllers/courses');
+
 const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
@@ -8,6 +10,7 @@ const helpers = require('../controllers/helpers');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const requireLogin = require('../middlewares/requireLogin');
 const querystring = require('querystring');
+const coursesController = require('../controllers/courses');
 
 module.exports = viewRoutes = (app,db,config) => {
 app.get('/',requireLogin, async  (req, res) => {
@@ -112,16 +115,57 @@ app.get('/course',requireLogin, async (req, res) => {
 });
 
 // RENDER VIEW CREATE COURSE
-app.get('/course/createCourse',requireLogin, async (req, res) => {
-
+app.get('/course/createCourse',urlencodedParser,requireLogin, async (req, res) => {
+ 
   var param  = await helpers.doGetParam(req,res,config,'createCourse');
   res.render('createCourse',param);
 });
+app.post('/course/createCourse',urlencodedParser, async (req, res) => {
+  //res.send(req.body);
+  var param  = await helpers.doGetParam(req,res,config,'createCourse');
+  var paramSave = {
+    "txtCourseName": req.body.txtCourseName,
+    "ddlCourseCategory": req.body.ddlCourseCategory,
+    "txtOneLiner": req.body.txtOneLiner,
+    "iDurationHours": req.body.iDurationHours,
+    "txtLanguage": req.body.txtLanguage,
+    "txtDescription": req.body.txtDescription,
+    "ddlType": req.body.ddlType,
+    "ddlType": req.body.ddlType,
+    "leason": [],
+    "photo": req.body.fileCoverPhoto
+  }
+
+  var hasil = await request.post({
+    headers: {'content-type' : 'application/x-www-form-urlencoded'},
+    url:     config.prodUrl+'/api/createCourse',
+    body:    querystring.stringify(paramSave)
+  }, function(error, response, body){
+    if(body == ''){ 
+        var paramResult = {'result':'error','msg':'hasil error'};
+        param['paramResult'] = paramResult;
+        res.render('createCourse',param);
+    }
+    else{
+      var resultCourse = JSON.parse(response.body); 
+      var paramResult = resultCourse
+      param['paramResult'] = paramResult;
+      res.render('createCourse',param);
+    }
+  });
+
+});
+
+
 
 // RENDER VIEW UPDATE COURSE
 app.get('/course/updateCourse',requireLogin, async (req, res) => {
   var param  = await helpers.doGetParam(req,res,config,'updateCourse');
   res.render('updateCourse',param);
+});
+app.post('/course/updateCourse',urlencodedParser,async(req,res)=>{
+
+  res.send('updateViewCourse');
 });
 
 // RENDER VIEW UPDATE COURSE ID

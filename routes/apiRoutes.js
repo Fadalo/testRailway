@@ -1,6 +1,8 @@
 var express = require('express');
 var apiRoutes = express.Router();
 const UserController = require('../controllers/user');
+const CourseController = require('../controllers/courses');
+
 const helpers = require('../controllers/helpers');
 const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
@@ -47,25 +49,27 @@ apiRoutes.post('/register', urlencodedParser, async (req, res) => {
 
 // LIST MUST HAVE LOGIN
 /* ROUTE COURSE */ 
-apiRoutes.get('/createCourse', (req, res) => {
+apiRoutes.get('/createCourse', async (req, res) => {
   res.send('createCourse');
 });
-apiRoutes.post('/createCourse', (req, res) => {
-    res.send('createCourse');
+apiRoutes.post('/createCourse',urlencodedParser, async (req, res) => {
+    res.send(await CourseController.doSave(req,res));
 });
   
-apiRoutes.get('/updateCourse', (req, res) => {
+apiRoutes.get('/updateCourse', async (req, res) => {
   res.send('updateCourse');
 });
-apiRoutes.post('/updateCourse', (req, res) => {
-    res.send('updateCourse');
-  });
+apiRoutes.post('/updateCourse',urlencodedParser, async (req, res) => {
+    //res.send('update');
+    res.send(await CourseController.doUpdate(req,res));
+});
 
-apiRoutes.get('/deleteCourse', (req, res) => {
+apiRoutes.get('/deleteCourse', async(req, res) => {
   res.send('deleteCourse');
 });
-apiRoutes.post('/deleteCourse', (req, res) => {
-    res.send('deleteCourse');
+apiRoutes.post('/deleteCourse', async(req, res) => {
+    res.send(await CourseController.doDelete(req,res));
+    //res.send('deleteCourse');
   });
 
 /* END COURSE SECTION */

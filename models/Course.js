@@ -5,7 +5,7 @@ const courseSchema = new Schema({
   "name": String,
   "category": String,
   "oneLiner": String,
-  "duration": number,
+  "duration": String,
   "language": String,
   "description": String,
   "type": { type: Number, default: 0 },

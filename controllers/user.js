@@ -6,10 +6,16 @@ const userController = {
    // 'module' : User,
     'doSave' :  async (req,res) =>{ 
      
-          var user = new User();
-            user.name = "hello4";
-            var id = await user.save();
-            return id;
+          
+          var  param = {
+                'name': req.body.name,
+                'type': req.body.type,
+                'emailID': req.body.emailID,
+                'password': req.body.password
+          };
+          var user = new User(param);
+          var id = await user.save();
+          return id;
     },
     'doUpdate' : async (req,res) =>{ 
 
@@ -37,6 +43,7 @@ const userController = {
         
     },
     'doRegister': async(req,res)=>{
+        
         var  param = {
                 'name': req.body.txtFullName,
                 'type': req.body.ddlType,
