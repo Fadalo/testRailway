@@ -12,6 +12,23 @@ const requireLogin = require('../middlewares/requireLogin');
 const querystring = require('querystring');
 const coursesController = require('../controllers/courses');
 
+const fs = require('fs');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+    console.log(req);
+		cb(null,  __dirname + 'uploads')
+	},
+	filename: (req, file, cb) => {
+		cb(null, file.fieldname + '-' + Date.now())
+	}
+});
+
+const upload = multer({ storage: storage });
+
+
+
 module.exports = viewRoutes = (app,db,config) => {
 app.get('/',requireLogin, async  (req, res) => {
   var param  = await helpers.doGetParam(req,res,config,'Dashboard');
@@ -120,7 +137,7 @@ app.get('/course/createCourse',urlencodedParser,requireLogin, async (req, res) =
   var param  = await helpers.doGetParam(req,res,config,'createCourse');
   res.render('createCourse',param);
 });
-app.post('/course/createCourse',urlencodedParser, async (req, res) => {
+app.post('/course/createCourse',urlencodedParser,upload.single('fileCoverPhoto'), async (req, res) => {
   //res.send(req.body);
   var param  = await helpers.doGetParam(req,res,config,'createCourse');
   var paramSave = {
@@ -178,6 +195,9 @@ app.get('/course/updateCourse/:id',requireLogin, async (req, res) => {
 app.get('/course/deleteCourse',requireLogin, async (req, res) => {
   
   var param  = await helpers.doGetParam(req,res,config,'deleteCourse');
+  var listCourses =  await courseController.doFindAll(req,res);
+  param['listCourses'] = listCourses;
+  res.send(param);
   res.render('deleteCourse',param);
 });
 

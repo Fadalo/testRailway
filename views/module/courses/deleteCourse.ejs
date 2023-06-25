@@ -1,4 +1,4 @@
-<%- include('../../partials/header'); %> <div class="container-fluid">
+<%- include('../../partials/header',{'pages':pages,'param':param}); %> <div class="container-fluid">
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Delete Courses <a href="/course/createCourse" class="btn btn-success btn-icon-split float-right">
       <span class="icon text-white-50">
@@ -14,6 +14,7 @@
          
           <div class="row">
             <div class="col-sm-12">
+              
               <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                 <thead>
                   <tr role="row">

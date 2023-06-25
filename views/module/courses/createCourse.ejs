@@ -1,4 +1,4 @@
-<%- include('../../partials/header'); %>
+<%- include('../../partials/header',{'pages':pages,'param':param}); %>
 
 
 <div class="container-fluid">
@@ -10,15 +10,16 @@
   <div class="row">
 
     <div class="col-lg-12">
-      <% if(!!locals.paramResult.result && paramResult.result == 'error'){ %>
+      
+      <% if(!!locals.paramResult && paramResult.result == 'error'){ %>
       <div class="alert alert-danger" role="alert">
-        <%=paramResult.msg -%> 
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;&nbsp;ERROR :&nbsp;<%=paramResult.msg.toUpperCase() -%> 
       </div>
       <% } %>
 
-     <% if(!!locals.paramResult.result && paramResult.result == 'ok'){ %>
+     <% if(!!locals.paramResult && paramResult.result == 'ok'){ %>
       <div class="alert alert-primary" role="alert">
-        <%=paramResult.msg -%> 
+        <i class="fas fa-check"></i>&nbsp;&nbsp;Success :&nbsp; Course Saved !!!
       </div>
       <% } %>
       
@@ -31,7 +32,7 @@
                     <div class="col-lg-12">
                         <div class="p-1">
                          
-                            <form id="formCreateCourse" name="formCreateCourse" method="post" target="_self"  Content-Type="form-data" action="/course/createCourse" class="user">
+                            <form id="formCreateCourse" name="formCreateCourse" method="post" target="_self"  Content-Type="multipart/form-data" action="/course/createCourse" class="user">
                     
                                 <div class="form-group row">
                                     <div class="col-sm-8">
