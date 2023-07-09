@@ -4,7 +4,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 var cors = require('cors');
-const oneDay = 1000 * 60 * 60 * 24;
+const oneDay =  24 * 60 * 60 * 1000 ;
 //const cookieSession = require('cookie-session');
 const config = require('./config/keys');
 
@@ -28,8 +28,8 @@ app.enable('trust proxy');
 app.use(session({
   
   secret: config.cookieKey, // Replace with your own secret key
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   cookie: { maxAge: oneDay }, // Set secure to true if using HTTPS
 }));
 

@@ -5,7 +5,8 @@ module.exports = {
    prodUrl : prodURL,
    mongoURI: mongoURI, 
    cookieKey: '928304nnd003jdailajsdh',
-    pages: {'title':'lms simplylearn final project','currentPages':'','prevPages':''},
+   pages: {'title':'lms simplylearn final project','currentPages':'','prevPages':''}
+   
 };
   
 
