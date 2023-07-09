@@ -192,12 +192,12 @@ app.get('/course/updateCourse/:id',requireLogin, async (req, res) => {
 });
 
 // RENDER VIEW DELETE COURSE
-app.get('/course/deleteCourse',requireLogin, async (req, res) => {
+app.get('/course/deleteCourse', async (req, res) => {
   
   var param  = await helpers.doGetParam(req,res,config,'deleteCourse');
   var listCourses =  await courseController.doFindAll(req,res);
   param['listCourses'] = listCourses;
-  res.send(param);
+  //res.send(param);
   res.render('deleteCourse',param);
 });
 

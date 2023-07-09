@@ -1,4 +1,7 @@
-<%- include('../../partials/header',{'pages':pages,'param':param}); %> <div class="container-fluid">
+<%- include('../../partials/header',{'pages':pages,'param':param}); %>
+
+<%=listCourses %>
+<div class="container-fluid">
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Delete Courses <a href="/course/createCourse" class="btn btn-success btn-icon-split float-right">
       <span class="icon text-white-50">
@@ -38,10 +41,11 @@
                   </tr>
                 </tfoot>
                 <tbody>
+                  <% for(var i=0; i<listCourses.length; i++) {%>
                   <tr class="odd">
-                    <td class="sorting_1">1</td>
+                    <td class="sorting_1"><%=(i+1)%></td>
                     <td style="padding:0px"><img src="https://internetmarketing.gold/wp-content/uploads/2023/04/ryan-darani-new-course.png" width="100%"/></td>
-                    <td>Web Development</td>
+                    <td><%=listCourses[i].name %></td>
                     <td>Programing Language</td>
                     <td>12 Hours</td>
                     <td><a href="#" class="btn btn-danger btn-icon-split">
@@ -51,19 +55,8 @@
                       <span class="text">Delete</span>
                   </a></td>
                   </tr>
-                  <tr class="even">
-                    <td class="sorting_1">2</td>
-                    <td style="padding:0px"><img src="https://internetmarketing.gold/wp-content/uploads/2023/04/ryan-darani-new-course.png" width="100%"/></td>
-                    <td>Java</td>
-                    <td>Programing Language</td>
-                    <td>28 Hours</td>
-                    <td><a href="#" class="btn btn-danger btn-icon-split">
-                      <span class="icon text-white-50">
-                          <i class="fas fa-trash"></i>
-                      </span>
-                      <span class="text">Delete</span>
-                  </a></td>
-                    
+                  
+                  <% } %>
                 </tbody>
               </table>
             </div>
